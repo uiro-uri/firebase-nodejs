@@ -3,12 +3,12 @@
 //
 // A simple chat server using Socket.IO, Express, and Async.
 //
-var http = require('http');
-var path = require('path');
+const http = require('http');
+const path = require('path');
 
-var async = require('async');
-var socketio = require('socket.io');
-var express = require('express');
+const async = require('async');
+const socketio = require('socket.io');
+const express = require('express');
 
 //
 // ## SimpleServer `SimpleServer(obj)`
@@ -24,7 +24,7 @@ router.use(express.static(path.resolve(__dirname, 'client')));
 var messages = [];
 var sockets = [];
 
-io.on('connection', function (socket) {
+io.on('connection', (socket) => {
     messages.forEach(function (data) {
       socket.emit('message', data);
     });
@@ -57,6 +57,11 @@ io.on('connection', function (socket) {
       socket.set('name', String(name || 'Anonymous'), function (err) {
         updateRoster();
       });
+    });
+
+    socket.on('flush', function () {
+      messages=[];
+      broadcast('flush',{});
     });
   });
 
