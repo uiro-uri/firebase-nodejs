@@ -1,5 +1,7 @@
 
-firebaseを使ったアプリケーションのデモ
+firebaseを使って同期するアプリケーションのサンプル　の予定
+
+画面同期だけならNode.jsだけでもできそう　複雑なデータを同期するならDBがいりそう
 
 This chat example showcases how to use `socket.io` with a static `express` server.
 
